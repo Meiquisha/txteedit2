@@ -1,0 +1,36 @@
+Descripción del error
+
+Al realizar el reporte de una chequera por chequera completa y por intervalo, el SFE permite procesar cheques que pertenecen a una chequera cuyo estatus es distinto de ACT (Activa).
+
+De acuerdo con la lógica del negocio, únicamente las chequeras con estatus ACT deben ser susceptibles de reporte. Las chequeras con estatus como SOL, GEN, ENV, REC, PAG, CAN, ENT u otros no deberían permitir esta operación.
+
+Sin embargo, al intentar reportar un intervalo de cheques perteneciente a una chequera con estatus GEN (u otro diferete a ACT) SFE muestra el mensaje "Cheque(s) reportado(s) exitosamente" y cambia el estatus de los cheques incluidos en el intervalo ya como bloqueados por robo/extravio.
+
+Posteriormente, al consultar el detalle de la chequera, la chequera continúa mostrando el estatus GEN (u otro diferete a ACT), mientras que los cheques reportados aparecen individualmente con estatus bloquado por robo/extravio, generando una inconsistencia entre el estatus de la chequera y el estatus de sus cheques.
+
+Resultado esperado: SFE debe impedir el reporte de cheques cuando la chequera no se encuentre en estatus ACT, mostrando un mensaje que indique que la operación no es válida y sin realizar cambios en los estatus de los cheques (según se nos comento).
+
+Nota: La validación fue realizada manualmente y con el robot durante las pruebas.
+
+
+Al realizar el reporte de la totalidad de los cheques de una chequera mediante un intervalo que abarca todos sus folios (por ejemplo, del cheque 1 al 100), el SFE  procesa correctamente el reporte de cada cheque, actualizando su estatus individual a Bloqueado por robo/extravio.
+
+Sin embargo, el estatus de la chequera no se actualiza en detalles de chequera y permanece en ACT (Activa), a pesar de que todos los cheques que la conforman ya se encuentran bloqueados.
+
+Esta situación genera una inconsistencia entre el estatus de la chequera y el estatus de sus cheques, ya que la chequera continúa figurando como activa cuando, en la práctica, la totalidad de sus cheques ha sido reportada y bloqueada.
+
+Resultado esperado: Una vez que todos los cheques de una chequera hayan sido reportados y se encuentren en estatus Bloqueado, en detalles de chequeras debería actualizar el estatus de la chequera a un estado consistente con dicha condición, evitando discrepancias entre el estatus de la chequera y el de sus cheques.
+
+Nota: La validación fue realizada manualmente y con el robot durante las pruebas.
+
+Buen día, equipo.
+
+Adjunto un archivo de Excel con los hallazgos identificados durante las pruebas realizadas en el módulo de Activación y Reporte de Chequeras, con el objetivo de documentar los comportamientos observados y darles seguimiento.
+
+Adicionalmente, ¿sería posible que nos compartieran el catálogo de mensajes de éxito, error, advertencia e informativos que pueden presentarse en los procesos de Activación y Reporte de Chequeras?
+
+Contar con estas leyendas nos permitirá mapear todos los escenarios posibles y tener identificado cualquier mensaje que pueda mostrarse durante la operación, facilitando la validación funcional y la implementación de las automatizaciones.
+
+Quedo atento a sus comentarios. Muchas gracias por el apoyo.
+
+Saludos cordiales.
