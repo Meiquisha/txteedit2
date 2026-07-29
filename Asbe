@@ -1,0 +1,7 @@
+The current process starts when a customer submits a request through an HSBC Branch. Depending on the requested operation, the request is processed through the available business channels, including Internet Banking (BPI) and the Contact Center (CC). These channels support several checkbook-related operations such as Activation, Protection, Unprotection, Release, Modification, and Reporting. Each request is processed manually through the corresponding channel before completion.
+====================
+The future-state business process begins when a customer submits a checkbook-related request through ChatBot Leo. The chatbot collects the required customer information and request details, then forwards the information to Power Automate for processing.
+
+Power Automate orchestrates the business workflow and executes the requested operation, including Checkbook Activation, Protection, Unprotection, Release, Modification, and Reporting. The automation applies the required business rules, processes the request, and returns the corresponding outcome.
+
+HSBC Branch and Contact Center (CC) remain available as alternative customer service channels. Regardless of the channel used, requests are processed through the same automated workflow managed by Power Automate, prov
